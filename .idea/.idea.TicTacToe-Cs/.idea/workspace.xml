@@ -7,11 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa6d94dc-b9a1-4825-9044-b642300661fd" name="Changes" comment="">
+    <list default="true" id="fa6d94dc-b9a1-4825-9044-b642300661fd" name="Changes" comment="&quot;Porting TicTacToe-C to C#:&#10;&#10;This commit translates the entire TicTacToe-C project to C# for a more modern codebase. All functions and logic have been successfully converted to leverage the features of the C# language. The conversion aims to enhance code readability, maintainability, and extensibility.&#10;&#10;Added Features:&#10;- Implementation of Console.Clear() for an improved user interface.&#10;- Usage of Console.ReadKey(true) for capturing key presses without displaying on the console.&#10;- Use of String.Format for improved text formatting.&#10;&#10;The project has been successfully compiled and tested in C#. This commit lays the foundation for future developments and expansions of the TicTacToe game in C#.&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe-Cs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe-Cs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe-Cs/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe-Cs/TicTacToeGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe-Cs/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe-Cs/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe-Cs/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe-Cs/UserInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe-Cs/TicTacToeGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe-Cs/TicTacToeGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe-Cs/UserInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe-Cs/UserInterface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://H:/Programmieren/.Git/TicTacToe-Cs/TicTacToe-Cs/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe-Cs/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -55,11 +55,11 @@
 }</component>
   <component name="RunManager">
     <configuration name="TicTacToe-Cs" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/TicTacToe-Cs/bin/Debug/net6.0/TicTacToe-Cs.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TicTacToe-Cs/bin/Debug/net6.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/TicTacToe-Cs/TicTacToe-Cs.csproj" />
@@ -67,7 +67,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net6.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -82,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704380709262</updated>
       <workItem from="1704380711626" duration="569000" />
-      <workItem from="1704390771814" duration="3039000" />
+      <workItem from="1704390771814" duration="4760000" />
     </task>
     <task id="LOCAL-00001" summary="Added&#10;Project Structure">
       <created>1704381081844</created>
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704381081844</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;Porting TicTacToe-C to C#:&#10;&#10;This commit translates the entire TicTacToe-C project to C# for a more modern codebase. All functions and logic have been successfully converted to leverage the features of the C# language. The conversion aims to enhance code readability, maintainability, and extensibility.&#10;&#10;Added Features:&#10;- Implementation of Console.Clear() for an improved user interface.&#10;- Usage of Console.ReadKey(true) for capturing key presses without displaying on the console.&#10;- Use of String.Format for improved text formatting.&#10;&#10;The project has been successfully compiled and tested in C#. This commit lays the foundation for future developments and expansions of the TicTacToe game in C#.&quot;">
+      <created>1704394016219</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704394016219</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +108,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added&#10;Project Structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added&#10;Project Structure" />
+    <MESSAGE value="&quot;Porting TicTacToe-C to C#:&#10;&#10;This commit translates the entire TicTacToe-C project to C# for a more modern codebase. All functions and logic have been successfully converted to leverage the features of the C# language. The conversion aims to enhance code readability, maintainability, and extensibility.&#10;&#10;Added Features:&#10;- Implementation of Console.Clear() for an improved user interface.&#10;- Usage of Console.ReadKey(true) for capturing key presses without displaying on the console.&#10;- Use of String.Format for improved text formatting.&#10;&#10;The project has been successfully compiled and tested in C#. This commit lays the foundation for future developments and expansions of the TicTacToe game in C#.&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Porting TicTacToe-C to C#:&#10;&#10;This commit translates the entire TicTacToe-C project to C# for a more modern codebase. All functions and logic have been successfully converted to leverage the features of the C# language. The conversion aims to enhance code readability, maintainability, and extensibility.&#10;&#10;Added Features:&#10;- Implementation of Console.Clear() for an improved user interface.&#10;- Usage of Console.ReadKey(true) for capturing key presses without displaying on the console.&#10;- Use of String.Format for improved text formatting.&#10;&#10;The project has been successfully compiled and tested in C#. This commit lays the foundation for future developments and expansions of the TicTacToe game in C#.&quot;" />
   </component>
 </project>

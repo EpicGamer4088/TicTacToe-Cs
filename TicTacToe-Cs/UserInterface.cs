@@ -2,7 +2,7 @@
 
 public class UserInterface
 {
-    public static void PrintTitleScreen()
+    private static void PrintTitleScreen()
     {
         Console.WriteLine("***********************************");
         Console.WriteLine("*                                 *");
@@ -17,6 +17,8 @@ public class UserInterface
 
         while (true)
         {
+            Console.Clear();
+            PrintTitleScreen();
             PrintMenuOptions(selectedOption);
 
             var key = Console.ReadKey(true);
@@ -32,8 +34,6 @@ public class UserInterface
             {
                 break;
             }
-
-            Console.Clear();
         }
 
         return selectedOption;
@@ -42,7 +42,7 @@ public class UserInterface
     public static string GetPlayerName()
     {
         Console.Clear();
-        Console.WriteLine("Gib den Namen des Spielers ein: ");
+        Console.Write("Gib den Namen des Spielers ein: ");
         return Console.ReadLine() ?? "Player";
     }
 

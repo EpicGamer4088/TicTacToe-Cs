@@ -21,7 +21,6 @@ public class TicTacToeGame
 
     public void StartGame()
     {
-        UserInterface.PrintTitleScreen();
         var selectedOption = UserInterface.GetMenuOption();
 
         switch (selectedOption)
@@ -34,10 +33,11 @@ public class TicTacToeGame
                 break;
             case 2:
                 UserInterface.PrintLoadingScreen();
-                string playerName = UserInterface.GetPlayerName();
+                var playerName = UserInterface.GetPlayerName();
                 GameWithAi(playerName);
                 break;
             case 3:
+                Console.Clear();
                 Console.WriteLine("Das Programm wird beendet. Auf Wiedersehen!");
                 Environment.Exit(0);
                 break;
@@ -52,45 +52,40 @@ public class TicTacToeGame
         var selectedRow = 0;
         var selectedCol = 0;
 
+        Console.Clear();
+        Console.SetCursorPosition(0, 0);
+        Console.CursorVisible = false;
+
         while (true)
         {
-            Console.Clear();
             var currentPlayerName = (_currentPlayer == 1) ? player1 : player2;
+
+            Console.Clear();
             Console.WriteLine(
                 $"{currentPlayerName}, bitte wählen Sie die Koordinaten Ihres Zuges mit den Pfeiltasten und bestätigen Sie mit ENTER:\n");
-
             UserInterface.PrintBoard(_board, selectedRow, selectedCol);
 
-            var keyPressed = Console.ReadKey(true).Key.GetHashCode();
+            var key = Console.ReadKey(true).Key;
 
-            switch (keyPressed)
+            switch (key)
             {
-                case 224:
-                    keyPressed = Console.ReadKey(true).Key.GetHashCode();
-
-                    switch (keyPressed)
-                    {
-                        case 72:
-                            if (selectedRow > 0)
-                                selectedRow--;
-                            break;
-                        case 80:
-                            if (selectedRow < GetSize - 1)
-                                selectedRow++;
-                            break;
-                        case 75:
-                            if (selectedCol > 0)
-                                selectedCol--;
-                            break;
-                        case 77:
-                            if (selectedCol < GetSize - 1)
-                                selectedCol++;
-                            break;
-                    }
-
+                case ConsoleKey.UpArrow:
+                    if (selectedRow > 0)
+                        selectedRow--;
                     break;
-
-                case 13:
+                case ConsoleKey.DownArrow:
+                    if (selectedRow < GetSize - 1)
+                        selectedRow++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (selectedCol > 0)
+                        selectedCol--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (selectedCol < GetSize - 1)
+                        selectedCol++;
+                    break;
+                case ConsoleKey.Enter:
                     if (_board[selectedRow, selectedCol] != ' ')
                         continue;
 
@@ -108,7 +103,7 @@ public class TicTacToeGame
                         UserInterface.PrintBoard(_board, selectedRow, selectedCol);
                         Thread.Sleep(500);
                         Console.WriteLine($"{currentPlayerName} hat gewonnen!\n");
-                        Thread.Sleep(500);
+                        Thread.Sleep(3000);
                         StartGame();
                     }
                     else if (_moves == GetSize * GetSize)
@@ -119,14 +114,13 @@ public class TicTacToeGame
                         UserInterface.PrintBoard(_board, selectedRow, selectedCol);
                         Thread.Sleep(500);
                         Console.WriteLine("Unentschieden!\n");
-                        Thread.Sleep(500);
+                        Thread.Sleep(3000);
                         StartGame();
                     }
 
                     _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
                     break;
             }
-
 
             UserInterface.PrintBoard(_board, selectedRow, selectedCol);
         }
@@ -138,39 +132,40 @@ public class TicTacToeGame
         var selectedRow = 0;
         var selectedCol = 0;
 
+        Console.Clear();
+        Console.SetCursorPosition(0, 0);
+        Console.CursorVisible = false;
+
         while (true)
         {
-            Console.Clear();
             var currentPlayerName = (_currentPlayer == 1) ? player1 : player2;
+
+            Console.Clear();
             Console.WriteLine(
                 $"{currentPlayerName}, bitte wählen Sie die Koordinaten Ihres Zuges mit den Pfeiltasten und bestätigen Sie mit ENTER:\n");
-
             UserInterface.PrintBoard(_board, selectedRow, selectedCol);
 
-            var keyPressed = Console.ReadKey(true).Key.GetHashCode();
-            switch (keyPressed)
+            var key = Console.ReadKey(true).Key;
+
+            switch (key)
             {
-                case 224:
-                    keyPressed = Console.ReadKey(true).Key.GetHashCode();
-                    switch (keyPressed)
-                    {
-                        case 72 when selectedRow > 0:
-                            selectedRow--;
-                            break;
-                        case 80 when selectedRow < GetSize - 1:
-                            selectedRow++;
-                            break;
-                        case 75 when selectedCol > 0:
-                            selectedCol--;
-                            break;
-                        case 77 when selectedCol < GetSize - 1:
-                            selectedCol++;
-                            break;
-                    }
-
+                case ConsoleKey.UpArrow:
+                    if (selectedRow > 0)
+                        selectedRow--;
                     break;
-
-                case 13:
+                case ConsoleKey.DownArrow:
+                    if (selectedRow < GetSize - 1)
+                        selectedRow++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (selectedCol > 0)
+                        selectedCol--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (selectedCol < GetSize - 1)
+                        selectedCol++;
+                    break;
+                case ConsoleKey.Enter:
                     if (_board[selectedRow, selectedCol] != ' ')
                         continue;
 
@@ -180,31 +175,28 @@ public class TicTacToeGame
                     UserInterface.PrintBoard(_board, selectedRow, selectedCol);
                     _moves++;
 
-                    switch (CheckWin((_currentPlayer == 1) ? 'X' : 'O'))
+                    if (CheckWin((_currentPlayer == 1) ? 'X' : 'O'))
                     {
-                        case true:
-                            Console.Clear();
-                            UserInterface.PrintBoard(_board, -1, -1);
-                            Thread.Sleep(500);
-                            Console.WriteLine($"{currentPlayerName} hat gewonnen!\n");
-                            Thread.Sleep(500);
-                            StartGame();
-                            break;
-
-                        case false when _moves == GetSize * GetSize:
-                            Console.Clear();
-                            UserInterface.PrintBoard(_board, -1, -1);
-                            Thread.Sleep(500);
-                            Console.WriteLine("Unentschieden!\n");
-                            Thread.Sleep(500);
-                            StartGame();
-                            break;
+                        Console.Clear();
+                        UserInterface.PrintBoard(_board, -1, -1);
+                        Thread.Sleep(500);
+                        Console.WriteLine($"{currentPlayerName} hat gewonnen!\n");
+                        Thread.Sleep(3000);
+                        StartGame();
+                    }
+                    else if (_moves == GetSize * GetSize)
+                    {
+                        Console.Clear();
+                        UserInterface.PrintBoard(_board, -1, -1);
+                        Thread.Sleep(500);
+                        Console.WriteLine("Unentschieden!\n");
+                        Thread.Sleep(3000);
+                        StartGame();
                     }
 
                     _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
 
-                    Console.WriteLine("KI ist am Zug");
-                    Thread.Sleep(1000);
+                    Console.Write("KI ist am Zug");
                     for (var i = 0; i < 3; i++)
                     {
                         Thread.Sleep(1000);
@@ -227,31 +219,28 @@ public class TicTacToeGame
                     UserInterface.PrintBoard(_board, selectedRow, selectedCol);
                     _moves++;
 
-                    switch (CheckWin((_currentPlayer == 1) ? 'X' : 'O'))
+                    if (CheckWin((_currentPlayer == 1) ? 'X' : 'O'))
                     {
-                        case true:
-                            Console.Clear();
-                            UserInterface.PrintBoard(_board, -1, -1);
-                            Thread.Sleep(500);
-                            Console.WriteLine("Die KI gewinnt!\n");
-                            Thread.Sleep(500);
-                            StartGame();
-                            break;
-
-                        case false when _moves == GetSize * GetSize:
-                            Console.Clear();
-                            UserInterface.PrintBoard(_board, -1, -1);
-                            Thread.Sleep(500);
-                            Console.WriteLine("Unentschieden!\n");
-                            Thread.Sleep(500);
-                            StartGame();
-                            break;
+                        Console.Clear();
+                        UserInterface.PrintBoard(_board, -1, -1);
+                        Thread.Sleep(500);
+                        Console.WriteLine("Die KI gewinnt!\n");
+                        Thread.Sleep(500);
+                        StartGame();
+                    }
+                    else if (_moves == GetSize * GetSize)
+                    {
+                        Console.Clear();
+                        UserInterface.PrintBoard(_board, -1, -1);
+                        Thread.Sleep(500);
+                        Console.WriteLine("Unentschieden!\n");
+                        Thread.Sleep(500);
+                        StartGame();
                     }
 
                     _currentPlayer = (_currentPlayer == 1) ? 2 : 1;
                     break;
             }
-
 
             UserInterface.PrintBoard(_board, selectedRow, selectedCol);
         }
