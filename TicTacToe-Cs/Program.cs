@@ -1,9 +1,10 @@
 ﻿namespace TicTacToe_Cs;
 
-public class Program
+class Program
 {
     public static void Main(string[] args)
     {
-        
+        var game = new TicTacToeGame();
+        game.StartGame();
     }
 }
